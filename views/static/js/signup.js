@@ -13,6 +13,7 @@ let url = "http://localhost:4000";
 let verifyEmail = async () => {
     try{
         let response = await axios.post(`${url}/user/verify-email`,{email : email.value});
+        console.log(response);
         if(response.data.success == true){
             return true;
         }
@@ -52,16 +53,16 @@ formDiv.addEventListener("click", async (e) => {
         
                 let response = await axios.post(`${url}/user/add-user`, requestBody);
                 console.log(response);
-                if(response.data.success == true){
-                    swal("Successfully Signed-Up!");
-                    window.location.replace(`${url}/login.html`);
-                }else{
-                    msg.innerHTML = "<p style='color : red'>ERROR in Response : Please Try Again!</p>"
-                }
                 name.value="";
                 email.value="";
                 password.value = ""
                 cpassword.value=""
+                if(response.data.success == true){
+                    alert("Successfully Signed-Up!");
+                    window.location.replace(`${url}/login.html`);
+                }else{
+                    msg.innerHTML = "<p style='color : red'>ERROR in Response : Please Try Again!</p>"
+                }
             }
         }
 

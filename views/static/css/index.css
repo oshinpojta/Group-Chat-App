@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Maze&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
 
 * {
   margin: auto;
@@ -18,6 +18,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #eeeed8;
+  margin: 0;
 }
 
 .hide-all {
@@ -82,6 +83,26 @@ body {
   padding: 10px;
 }
 
+.create-group button{
+  cursor: pointer;
+  width: 130px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  background-color:rgba(4, 59, 16, 0.822);
+  color: white;
+  margin: 10px;
+  transition: background-color 0.5s, width 0.5s, height 0.5s;
+}
+
+.create-group button:hover{
+  background-color: rgba(5, 95, 25, 0.822);
+  width: 136px;
+  height: 43px;
+}
+
 .logout-div{
   display: flex;
   float: right;
@@ -114,15 +135,17 @@ body {
   width: 100%;
 }
 
-.user-container-div {
+.group-container-div {
   display: block;
+  overflow-y: scroll;
   width: 30%;
   height: 100%;
   margin: 0;
   padding: 5px;
 }
 
-.user-div {
+.group-div {
+  cursor: pointer;
   display: block;
   border-radius: 15px;
   background-color: rgb(16, 16, 24);
@@ -132,24 +155,33 @@ body {
   padding: 5px;
   justify-content: center;
   align-items: center;
+  transition: width 0.4s, height 0.4s, background-color 0.4s, color 0.4s;
 }
 
-.user-div.active-chat {
-  background-color: rgb(43, 46, 116);
+.group-div:hover {
+  width: 96%;
+  height: 103px;
+  background-color: #ffffff;
+  color: black;
 }
 
-.user-content{
+.group-div.active {
+  background-color: rgba(11, 245, 233, 0.781);
+  color: rgb(0, 0, 0);
+}
+
+.group-content{
   display: flex;
   width: 90%;
   margin: 5px;
   padding: 5px;
 }
 
-.user-content h2 {
+.group-content h2 {
   margin-left: 5px;
 }
 
-.user-extra-content {
+.group-extra-content {
   display: flex;
   font-weight: 900;
   margin: 5px;
@@ -162,7 +194,7 @@ body {
   margin-bottom: 10px;
 }
 
-.profile-pic {
+.group-profile-pic {
   display: flex;
   width: 60px;
   height: 60px;
@@ -170,11 +202,51 @@ body {
   float: left;
 }
 
+.add-to-group button{
+  cursor: pointer;
+  width: 80px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color:rgba(73, 32, 121, 0.822);
+  color: white;
+  margin: 10px;
+  transition: background-color 0.5s, width 0.5s, height 0.5s;
+}
+
+.add-to-group button:hover{
+  background-color: rgba(75, 18, 139, 0.822);
+  width: 85px;
+  height: 38px;
+}
+
+
+.delete-group button{
+  cursor: pointer;
+  width: 80px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(122, 44, 7);
+  color: white;
+  margin: 10px;
+  transition: background-color 0.5s, width 0.5s, height 0.5s;
+}
+
+.delete-group button:hover{
+  background-color: rgb(158, 38, 8);
+  width: 85px;
+  height: 38px;
+}
+
 
 .chat-container-div{
+  overflow-y: scroll;
   display: block;
   background-color: rgba(11, 12, 22, 0.658);
-  background-image: url(https://cutewallpaper.org/21/whatsapp-free-wallpapers/Whatsapp-Wallpapers-Top-Free-Whatsapp-Backgrounds-.jpg);
+  background-image: url(https://wallpapercave.com/wp/wp3170736.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -184,26 +256,37 @@ body {
 
 .notification-div {
   display: block;
-  width: 40%;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  width: 70%;
+  margin: 20px 5px 5px 60px;
   padding: 10px;
-  background-color: #ffffffe1;
-  color: black;
-  font-family: 'Courier New', Courier, monospace;
   border-radius: 15px;
-  text-align: left;
-  align-items: center;
-  justify-content: center;
+  background-color: rgba(73, 32, 121, 0.822);
+  color: rgb(255, 255, 255);
   text-align: center;
-  float: none;
-  clear: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900;
+  float: left;
+  clear: left;
 }
 
 
 .msg-div {
  display: block;
  width: auto;
+}
+
+.empty{
+  display: block;
+  width: 70%;
+  height: 70px;
+  margin: 20px 5px 5px 20px;
+  padding: 10px;
+  border-radius: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  text-align: left;
+  float: left;
+  clear: left;
 }
 
 .received{
@@ -289,8 +372,53 @@ body {
   font-size: small;
 }
 
+.input-container-div{
+  margin: 0px 40px 40px 0px;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 85%;
+  left: 32%;
+  width: 100%;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
 
+.input-container-div input{
+  width: 40%;
+  height: 28px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  margin: 5px;
+  padding: 5px;
+}
 
+.input-container-div input#file{
+  cursor: pointer;
+  display: block;
+}
+
+.input-container-div button {
+  cursor: pointer;
+  width: 80px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(2, 124, 49);
+  color: white;
+  margin-right: 20px;
+  transition: background-color 0.5s, width 0.5s, height 0.5s;
+}
+
+.input-container-div button:hover{
+  background-color: rgb(255, 72, 0);
+  width: 82px;
+  height: 43px;
+}
 
 .swal-overlay {
   background-color: rgba(255, 255, 255, 0.493);
@@ -334,4 +462,203 @@ body {
   text-align: center;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+
+.popup .content {
+  overflow-y: scroll;
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%,-150%) scale(0);
+  width: 500px;
+  height: 750px;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: #262626;
+  box-shadow:  38px 38px 56px #1e1e1e, 
+              -25px -25px 38px #1e1e1e;
+  z-index: 1;
+ }
+
+ .popup .close-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-size: 30px;
+  border-radius: 50%;
+  padding: 2px 5px 7px 5px;
+  background: #292929;
+  box-shadow:  5px 5px 15px #1e1e1e, 
+              -5px -5px 15px #1e1e1e;
+  }
+
+
+.popup.active .content {
+  transition: all 300ms ease-in-out;
+  transform: translate(-50%,-50%) scale(1);
+  }
+
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+a {
+  font-weight: 600;
+  color: white;
+ }
+
+ .input-field input {
+  width: 350px;
+ }
+
+
+ .input-field .validate {
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 15px;
+  color: #bfc0c0;
+  background: #262626;
+  box-shadow: inset 5px 5px 5px #232323, 
+              inset -5px -5px 5px #292929;
+  outline: none;
+}
+
+
+.first-button {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 30px 50px;
+  border-radius: 40px;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  background: #262626;
+  box-shadow:  18px 18px 25px #1e1e1e, 
+                -15px -15px 25px #1e1e1e;
+  transition: box-shadow .35s ease !important;
+  outline: none;
+}
+  
+.first-button:active {  
+  background: linear-gradient(145deg, #222222, #292929);
+  box-shadow:  5px 5px 10px #262626, 
+                -5px -5px 10px #262626;
+  border: none;
+}
+
+.second-button {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 20px;
+  padding: 20px 30px;
+  border-radius: 40px;
+  border: none;
+  background: #262626;
+  box-shadow:  8px 8px 15px #202020, 
+                -8px -8px 15px #2c2c2c;
+  transition: box-shadow .35s ease !important;
+  outline: none;
+}
+  
+.second-button:active{
+  background: linear-gradient(145deg,#222222, #292929);
+  box-shadow: 5px 5px 10px #262626, -5px -5px 10px #262626;
+  border: none;
+  outline: none;
+}
+
+.search-container {
+  margin: 10px 10px 10px 60px; 
+  padding: 10px;
+}
+
+.user{
+  width: 350px;
+  height: auto;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(59, 58, 58, 0.377);
+  border-radius: 10px;
+}
+
+.user button.add-to-group-btn{
+  cursor: pointer;
+  width: 180px;
+  height: 25px;
+  color: #ffffff;
+  background-color: #280253;
+  border-radius: 5px;
+  border: none;
+}
+
+.user h2{
+  margin: 5px;
+}
+
+.user p{
+  margin: 5px;
+}
+
+
+.members-div{
+  width: 350px;
+  height: auto;
+  margin-left: 60px;
+  padding: 10px;
+}
+
+.member{
+  width: 350px;
+  height: auto;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(59, 58, 58, 0.377);
+  border-radius: 10px;
+}
+
+.member button.admin-btn{
+  cursor: pointer;
+  width: 180px;
+  height: 25px;
+  color: #ffffff;
+  background-color: #235c02;
+  border-radius: 5px;
+  border: none;
+}
+
+.member button.remove-user-btn{
+  cursor: pointer;
+  width: 120px;
+  height: 25px;
+  color: #ffffff;
+  background-color: #6b0505;
+  border-radius: 5px;
+  border: none;
+}
+
+.member h2{
+  margin: 5px;
+}
+
+.member p{
+  margin: 5px;
 }

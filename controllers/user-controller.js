@@ -26,6 +26,40 @@ exports.loginUserByEmailAndPassword = async (req, res, next) => {
     }
 }
 
+exports.getUsersByType = async (req, res, next)=>{
+    try {
+        let searchText = req.body.searchText;
+        let searchType = req.body.searchType;
+        console.log(searchText, searchType);
+        let response = [];
+        let users = await userService.getAllUsers();
+        if(searchType == "name"){
+            for(let i=0;i<users.length;i++){
+                if(users[i].name.toUpperCase().includes(searchText.toUpperCase())){
+                    response.push(users[i]);
+                }
+            }
+        }else if(searchType == "email"){
+            for(let i=0;i<users.length;i++){
+                if(users[i].email.toUpperCase().includes(searchText.toUpperCase())){
+                    response.push(users[i]);
+                }
+            }
+        }else if(searchType == "phone"){
+            for(let i=0;i<users.length;i++){
+                if(users[i].phone.includes(searchText)){
+                    response.push(users[i]);
+                }
+            }
+        }
+        res.json({success : true, data : response});
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({success : false});
+    }
+}
+
 exports.addUser = async (req, res, next ) => {
     try {
 

@@ -4,139 +4,69 @@
       <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
         <title>Group-Chat</title>
         <link rel="icon" href="data:;base64,=">
-        <link rel="stylesheet" href="./static/css/index.css">
+        <!-- <link rel="stylesheet" href="sweetalert2.min.css"> -->
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
       <!-- <div class="hide-all"></div> -->
-        <div class="nav-div">
-          <div class="nav-user-div"><img src="./static/img/mike.jpg"><h2 id="username">Mike Ross</h2></div>
-          <div class="logout-div">
-            <button id="logout" type="button">Log-Out</button>
-          </div>
+        <div class="nav-div" id="navDiv">
+          
         </div>
+        <input type="hidden" id="hiddenGroupId">
 
         <div class="container-div">
 
-          <!-- <div class="user-container-div">
+          <div class="group-container-div" id="group-container">
 
-            <div class="user-div" id="1">
-              <div class="user-content">
-                  <img class="profile-pic" src="./static/img/oshin.jpg">
-                <h2 class="user-details">Oshin Pojta</h2>
-                <p class="sent-time">10:00pm</p>
-              </div>
-              <div class="user-extra-content">
-                <p class="sent-msg">Hello Bro</p>
-                <p class="sent-confirmation"><i class="fa fa-check" aria-hidden="true"></i></p>
-              </div>
-            </div>
-    
-            <div class="user-div active-chat" id="2">
-                <div class="user-content">
-                  <img class="profile-pic" src="./static/img/oshin.jpg">
-                <h2 class="user-details">Ramesh Chauh..</h2>
-                <p class="sent-time">10:01pm</p>
-              </div>
-              <div class="user-extra-content">
-                <p class="sent-msg">Good! Lorem ipsum ...</p>
-                <p class="sent-confirmation"><i class="fa fa-check" aria-hidden="true"></i></p>
-              </div>
+            </div> 
+
+            <div class="chat-container-div">
+              
+              <div class="add-messages-div" id="add-messages-div">
+              
             </div>
 
-            <div class="user-div" id="3">
-                <div class="user-content">
-                    <img class="profile-pic" src="./static/img/oshin.jpg">
-                  <h2 class="user-details">Sahil Thak..</h2>
-                  <p class="sender-time">10:00pm</p>
-                </div>
-                <div class="user-extra-content">
-                  <p class="sent-msg">Nice !!</p>
-                  <p class="sent-confirmation"><i class="fa fa-check" aria-hidden="true"></i></p>
-                </div>
+                
             </div>
-
-            <div class="user-div" id="4">
-              <div class="user-content">
-                  <img class="profile-pic" src="./static/img/oshin.jpg">
-                <h2 class="user-details">Oshin Pojta</h2>
-                <p class="sent-time">10:00pm</p>
-              </div>
-              <div class="user-extra-content">
-                <p class="sent-msg">Hello Bro</p>
-                <p class="sent-confirmation"><i class="fa fa-check" aria-hidden="true"></i></p>
-              </div>
-            </div>
-
-
-            <div class="user-div" id="5">
-              <div class="user-content">
-                  <img class="profile-pic" src="./static/img/oshin.jpg">
-                <h2 class="user-details">Oshin Pojta</h2>
-                <p class="sent-time">10:00pm</p>
-              </div>
-              <div class="user-extra-content">
-                <p class="sent-msg">Hello Bro</p>
-                <p class="sent-confirmation"><i class="fa fa-check" aria-hidden="true"></i></p>
-              </div>
-            </div>
-
-          </div> -->
-
-          <div class="chat-container-div">
-
-            <div class="notification-div">
-              <h4 class="notfification">Oshin joined!</h4>
-            </div>
-
-            <div class="notification-div">
-              <h4 class="notfification">Rahul joined!</h4>
-            </div>
-
-             <div class="msg-div">
-              <div class="received">
-                <p class="received-name">Rahul</p>
-                <p class="received-msg">Hey</p>
-                <p class="received-time">10:00pm</p>
-              </div>
-              </div>
-
-              <div class="msg-div">
-              <div class="sent">
-                <p class="sent-name">Oshin</p>
-                <p class="sent-msg">Hello Bro</p>
-                <p class="sent-time">10:00pm</p>
-                <!-- <p class="sent-confirmation"><i class="fa fa-check-double seen"></i></p> -->
-              </div>
-              </div>
-
-              <div class="msg-div">
-              <div class="sent">
-                <p class="sent-name">Oshin</p>
-                <p class="sent-msg">How are you?</p>
-                <p class="sent-time">10:01pm</p>
-                <!-- <p class="sent-confirmation"><i class="fa fa-check" aria-hidden="true"></i></p> -->
-              </div>
-              </div>
-
-              <div class="msg-div">
-                <div class="received">
-                  <p class="received-name">Rahul</p>
-                  <p class="received-msg">Good! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, voluptates quod ratione obcaecati accusantium ipsa error, perspiciatis eum aliquam culpa molestias, vero sunt magnam maxime quos eligendi ab non! Ducimus?</p>
-                  <p class="received-time">10:02pm</p>
-                </div>
-                </div>
-
-          </div>
 
         </div>
 
+        <div class="popup" id="popup-1">
+
+          <div class="content">
+           <div class="close-btn" onclick="togglePopup()" style="cursor:pointer;">
+            ×</div>
+            
+            <h1 id="popupGroupName"></h1> 
+            <div class="input-field">
+              <input id="searchBox" placeholder="Search User By Name, Email Or Phone..." class="validate"></div>
+            <div class="input-field">
+              <select id="selectBox" class="validate">
+                <option value="name">Name</option>
+                <option value="email">Email</option>
+                <option value="pame">Phone</option>
+              </select>
+            </div>
+            <button id="searchBtn" class="second-button" style="cursor:pointer;">Search</button>
+            <div class="search-container">
+              
+          </div>
+
+          <div class="members-div">
+            
+        </div> 
+            
+          </div>
+         </div>
   
 
 
         
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <!-- <script src="sweetalert2.min.js"></script> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <script src="./static/js/index.js"></script>
+            <script src="/js/index.js"></script>
     </body>
 </html>

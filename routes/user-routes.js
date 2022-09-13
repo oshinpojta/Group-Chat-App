@@ -9,6 +9,8 @@ router.post("/verify-email",userController.checkUserExists);
 
 router.post("/logout", userController.logoutUser);
 
+router.post("/getByType", userController.getUsersByType);
+
 router.post("/add-user",userController.addUser);
 
 router.put("/update-user",userController.updateUser);
