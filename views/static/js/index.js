@@ -80,7 +80,7 @@ async function getMesssages (groupId){
                             document.querySelector("#add-messages-div").innerHTML += `<div class="msg-div">
                                                                                             <div class="received">
                                                                                                 <p class="received-name">${user.name}</p>
-                                                                                                <p class="received-msg">${message.message}</p>
+                                                                                                <p><a href="${message.message.slice(9)}"><img class="sent-msg" style="max-width: 500px; height: auto;" src="${message.message.slice(9)}"/></a></p>
                                                                                                 <p class="received-time">${timeText}</p>
                                                                                             </div>
                                                                                         </div>`;
@@ -88,7 +88,7 @@ async function getMesssages (groupId){
                             document.querySelector("#add-messages-div").innerHTML += `<div class="msg-div">
                                                                                             <div class="received">
                                                                                                 <p class="received-name">${user.name}</p>
-                                                                                                <p><a href="${message.message.slice(9)}"><img class="sent-msg" style="max-width: 500px; height: auto;" src="${message.message.slice(9)}"/></a></p>
+                                                                                                <p class="received-msg">${message.message}</p>
                                                                                                 <p class="received-time">${timeText}</p>
                                                                                             </div>
                                                                                         </div>`;
@@ -126,9 +126,6 @@ async function groupDivClick(id) {
             }
             
             //console.log(id);
-            if(document.querySelector(".active")){
-                document.querySelector(".active").classList.remove("active");
-            }
             
             document.querySelector("#hiddenGroupId").value = id;
             let response = null;
@@ -214,7 +211,7 @@ async function groupDivClick(id) {
                 localStorage.setItem(id, JSON.stringify(messagesObj));
             }
             
-            //getMesssages(id);
+            getMesssages(id);
         
     } catch (error) {
         console.log(error);
@@ -318,13 +315,13 @@ const getClick = async (e) => {
         if(e.target.className == "add-to-group-btn"){
             let groupId = currentGroupMembers[0].userGroup.groupId;
             let userId = e.target.parentNode.id;
-            console.log(groupId, userId);
             let response = await axios.post(`${url}/user-groups/addUserGroup`, { userId : userId, groupId : groupId}, options);
+            console.log(response.data.data);
             if(response.data.success == true){
                 let userName = e.target.parentNode.querySelector(".name").innerText;
                 let userEmail = e.target.parentNode.querySelector(".email").innerText;
                 let userPhone = e.target.parentNode.querySelector(".phone").innerText;
-                let text = `<div class="member" id="${userId}">
+                let text = `<div class="member" id="${response.data.data.id}">
                                 <h2>${userName}</h2>
                                 <p>${userEmail}</p>
                                 <p>${userPhone}</p>
@@ -359,6 +356,9 @@ const getClick = async (e) => {
 
         if(e.target.className == "group-div"){
             let id = e.target.id;
+            if(document.querySelector(".active")){
+                document.querySelector(".active").classList.remove("active");
+            }
             e.target.classList.add("active");
             groupDivClick(id);
 
@@ -366,12 +366,18 @@ const getClick = async (e) => {
 
         if(e.target.className == "group-content"){
             let id = e.target.parentNode.id;
+            if(document.querySelector(".active")){
+                document.querySelector(".active").classList.remove("active");
+            }
             e.target.parentNode.classList.add("active");
             groupDivClick(id);
         }
 
         if(e.target.className == "group-details"){
             let id = e.target.parentNode.parentNode.id;
+            if(document.querySelector(".active")){
+                document.querySelector(".active").classList.remove("active");
+            }
             e.target.parentNode.parentNode.classList.add("active");
             groupDivClick(id);
         }
@@ -493,7 +499,7 @@ const getClick = async (e) => {
 
         if(e.target.className == "remove-user-btn"){
             let userGroupId = e.target.parentNode.id;
-            console.log(userGroupId);
+            // console.log(userGroupId);
             let response = await axios.delete(`${url}/user-groups/delete/${userGroupId}`, options);
             if(response.data.success == true){ 
                 alert("Removed Successfully!");
