@@ -31,7 +31,7 @@ app.use(cors());
 // app.use(helmet({
 //     contentSecurityPolicy: false,
 //   }));
-// app.use(morgan("combined", { stream : accessLogStream}));
+app.use(morgan("combined", { stream : accessLogStream}));
 app.use(fileupload());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, `views`,`static`)));

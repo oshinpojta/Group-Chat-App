@@ -8,7 +8,7 @@ var instanceID = null;
 var lastMessageId = null;
 
 
-let url = "http://localhost:4000";
+let url = "http://18.237.47.157:4000";
 let jwt_token = sessionStorage.getItem('token'); //getCookie('token')
 let options = { 
     headers : { 

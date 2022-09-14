@@ -8,7 +8,7 @@ const login = document.querySelector("#login");
 const formDiv = document.querySelector("#form-div");
 const msg = document.querySelector("#msg");
 
-let url = "http://localhost:4000";
+let url = "http://18.237.47.157:4000";
 
 let verifyEmail = async () => {
     try{
